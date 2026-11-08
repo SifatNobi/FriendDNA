@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --color-friend-bg: #05070b;
+  --color-friend-card: #101827;
+  --color-friend-blue: #1677ff;
+  --color-friend-cyan: #35d8ff;
+}
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #23334c transparent;
+  }
+  html {
+    background: #05070b;
+  }
+  body {
+    min-width: 320px;
+    background:
+      radial-gradient(circle at 50% -15%, rgba(22, 119, 255, 0.12), transparent 28rem),
+      #05070b;
+  }
+  button, input {
+    outline: none;
+  }
+  button:focus-visible, input:focus-visible {
+    box-shadow: 0 0 0 3px rgba(53, 216, 255, 0.35);
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply px-5 pb-32 pt-6;
+  }
+  .screen-title {
+    @apply text-[28px] font-black leading-8 tracking-[-0.045em];
+  }
+  .screen-subtitle {
+    @apply mt-2 text-sm leading-6 text-slate-400;
+  }
+  .icon-button {
+    @apply grid size-11 place-items-center rounded-xl border border-white/[.07] bg-white/[.035] text-slate-300 transition hover:border-blue-400/25 hover:bg-blue-500/10 hover:text-cyan-300;
+  }
+  .secondary-button {
+    @apply flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[.035] px-5 py-3 text-sm font-extrabold text-slate-200 transition hover:border-blue-400/30 hover:bg-blue-500/10;
+  }
+  .text-button {
+    @apply flex min-h-11 w-full items-center justify-center text-sm font-bold text-slate-400 transition hover:text-cyan-300;
+  }
+  .field-label {
+    @apply mt-5 block text-xs font-bold text-slate-400;
+  }
+  .field {
+    @apply mt-2 min-h-12 w-full rounded-2xl border border-white/10 bg-[#0A0F18] px-4 text-sm font-semibold text-white placeholder:text-slate-600 focus:border-cyan-300/50;
+  }
+  .selection-card {
+    @apply flex min-h-16 items-center gap-3 rounded-2xl border border-white/[.07] bg-white/[.025] p-4 text-slate-300 transition hover:border-blue-400/25;
+  }
+  .selection-card-active {
+    @apply border-cyan-300/50 bg-blue-500/10 text-white shadow-[inset_0_0_24px_rgba(22,119,255,.08)];
+  }
+  .surface-card {
+    @apply rounded-2xl border border-white/[.07] bg-[#101827]/80 p-5;
+  }
+  .activity-card {
+    @apply flex min-h-18 items-center gap-3 rounded-2xl border border-white/[.07] bg-[#101827]/70 p-3.5 transition hover:border-blue-400/20;
+  }
+  .activity-card strong {
+    @apply block text-sm;
+  }
+  .activity-card p {
+    @apply mt-1 text-xs text-slate-500;
+  }
+  .info-card {
+    @apply flex gap-3 rounded-2xl border border-blue-400/15 bg-blue-500/[.06] p-4 text-left;
+  }
+  .info-card strong, .info-card > div > div {
+    @apply text-sm;
+  }
+  .info-card p {
+    @apply mt-1 text-xs leading-5 text-slate-500;
+  }
+  .hero-card {
+    @apply relative min-h-64 overflow-hidden rounded-[2rem] border border-blue-400/20 bg-gradient-to-br from-blue-700/40 via-blue-500/20 to-cyan-400/5 p-6 shadow-[0_20px_70px_rgba(0,0,0,.25)];
+  }
+  .quick-action {
+    @apply flex min-h-24 flex-col items-center justify-center gap-2 rounded-2xl border border-white/[.07] bg-white/[.025] text-[11px] font-bold text-slate-300 transition hover:border-blue-400/20 hover:bg-blue-500/[.06];
+  }
+  .section-heading {
+    @apply mb-3 mt-8 flex items-end justify-between;
+  }
+  .section-heading > div > span {
+    @apply block text-base font-extrabold;
+  }
+  .section-heading small {
+    @apply mt-1 block text-[11px] text-slate-600;
+  }
+  .section-heading > button {
+    @apply text-xs font-bold text-cyan-300;
+  }
+  .score-ring {
+    @apply grid size-16 place-items-center rounded-full border-[5px] border-cyan-300 text-lg font-black text-white shadow-[0_0_24px_rgba(53,216,255,.14)];
+  }
+  .score-ring span {
+    @apply -ml-3 mt-1 text-[9px] text-cyan-300;
+  }
+  .filter-chip {
+    @apply shrink-0 rounded-xl border border-white/[.07] bg-white/[.025] px-4 py-2.5 text-xs font-bold text-slate-500 transition;
+  }
+  .filter-chip-active {
+    @apply border-blue-400/25 bg-blue-500/10 text-cyan-300;
+  }
+  .pack-icon {
+    @apply grid size-11 shrink-0 place-items-center rounded-xl;
+  }
+  .pack-blue { @apply bg-blue-500/10 text-cyan-300; }
+  .pack-cyan { @apply bg-cyan-400/10 text-cyan-300; }
+  .pack-violet { @apply bg-violet-400/10 text-violet-300; }
+  .pack-pink { @apply bg-pink-400/10 text-pink-300; }
+  .pack-green { @apply bg-emerald-400/10 text-emerald-300; }
+  .pack-muted { @apply bg-slate-700/30 text-slate-500; }
+  .question-number {
+    @apply grid size-7 shrink-0 place-items-center rounded-lg bg-blue-500/10 text-xs font-black text-cyan-300;
+  }
+  .setting-row {
+    @apply flex min-h-16 items-center justify-between gap-4 border-b border-white/[.06] py-3 last:border-b-0;
+  }
+  .setting-row strong {
+    @apply text-sm;
+  }
+  .setting-row p {
+    @apply mt-1 text-[11px] text-slate-500;
+  }
+  .toggle {
+    @apply relative h-7 w-12 shrink-0 rounded-full bg-slate-700 transition;
+  }
+  .toggle span {
+    @apply absolute left-1 top-1 size-5 rounded-full bg-slate-300 transition;
+  }
+  .toggle-on {
+    @apply bg-blue-500;
+  }
+  .toggle-on span {
+    @apply translate-x-5 bg-white;
+  }
+  .stat-card {
+    @apply flex min-h-20 flex-col items-center justify-center rounded-2xl border border-white/[.07] bg-white/[.025] text-center;
+  }
+  .stat-card strong {
+    @apply text-xl font-black;
+  }
+  .stat-card span {
+    @apply mt-1 text-[10px] font-semibold text-slate-500;
+  }
+  .answer-option {
+    @apply flex min-h-16 w-full items-center gap-3 rounded-2xl border border-white/[.08] bg-white/[.025] p-3 text-left transition hover:border-blue-400/25;
+  }
+  .answer-option > span {
+    @apply grid size-9 shrink-0 place-items-center rounded-xl border border-white/10 text-xs font-black text-slate-500;
+  }
+  .answer-option strong {
+    @apply text-sm;
+  }
+  .answer-option-active {
+    @apply border-cyan-300/50 bg-blue-500/10;
+  }
+  .answer-option-active > span {
+    @apply border-cyan-300/50 bg-cyan-300/10 text-cyan-300;
+  }
+  .result-orbit {
+    @apply relative grid size-48 place-items-center rounded-full border border-blue-400/30 bg-blue-500/10 shadow-[0_0_80px_rgba(22,119,255,.22)];
+  }
+  .result-orbit::before {
+    content: "";
+    @apply absolute inset-3 rounded-full border border-dashed border-cyan-300/30;
+  }
+  .result-orbit div {
+    @apply relative flex items-baseline justify-center;
+  }
+  .result-orbit strong {
+    @apply text-6xl font-black tracking-[-0.08em];
+  }
+  .result-orbit span {
+    @apply text-xl font-black text-cyan-300;
+  }
+  .result-orbit small {
+    @apply absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-bold tracking-widest text-slate-500;
+  }
+  .toast {
+    @apply fixed bottom-7 left-1/2 z-50 -translate-x-1/2 rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-xs font-bold shadow-2xl;
+  }
+  .legal-document h1 {
+    @apply mt-3 text-4xl font-black leading-tight tracking-[-0.045em] sm:text-5xl;
+  }
+  .legal-document section {
+    @apply mt-10;
+  }
+  .legal-document h2 {
+    @apply text-xl font-black tracking-[-0.025em] text-white sm:text-2xl;
+  }
+  .legal-document h3 {
+    @apply mt-6 text-base font-extrabold text-slate-200;
+  }
+  .legal-document p {
+    @apply mt-4 text-sm leading-7 text-slate-400 sm:text-base sm:leading-8;
+  }
+  .legal-document ul {
+    @apply mt-4 list-disc space-y-2 pl-6 text-sm leading-7 text-slate-400 sm:text-base sm:leading-8;
+  }
+  .legal-document a {
+    @apply font-bold text-cyan-300 underline decoration-cyan-300/40 underline-offset-2 hover:text-cyan-200;
+  }
+}
+
+select.field option {
+  background: #101827;
+  color: #f5f8ff;
+}
+
+.glow-orb {
+  position: absolute;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 999px;
+  filter: blur(100px);
+  opacity: 0.17;
+  pointer-events: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.figma-custom-code-fragment {
+  display: contents;
+}
+
+.figma-bypass-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 2147483647;
+  transform: translateY(-150%);
+  border-radius: 6px;
+  background: #111827;
+  color: #fff;
+  padding: 8px 12px;
+  font: 600 14px/1.2 system-ui, sans-serif;
+  text-decoration: none;
+}
+
+.figma-bypass-link:focus {
+  transform: translateY(0);
+}
